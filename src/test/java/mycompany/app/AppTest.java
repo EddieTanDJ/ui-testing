@@ -23,7 +23,7 @@ public class AppTest
 {
 	WebDriver driver; 
 	WebDriverWait wait; 
-	String url = "http://172.17.0.2";
+	String url = "http://my-apache-php-app";
 	String validEmail = "user@example.com";
 	String validPassword = "password1234";
 	String invalidEmail = "none@example.com";
@@ -38,7 +38,7 @@ public class AppTest
 	@After
     public void tearDown() { 
 		driver.quit(); 
-	}	 
+	}
 	
     @Test
     public void testLoginWithValidEmailValidPassword() 
