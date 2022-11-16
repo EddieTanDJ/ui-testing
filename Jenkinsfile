@@ -1,12 +1,6 @@
 pipeline {
 	agent none
 	stages {
-		stage('Setup bridge network') {
-	        agent any
-				steps {
-				    sh 'docker network inspect my-net >/dev/null 2>&1 || docker network create --driver bridge my-net'
-			    }
-	    }
 		stage('Integration UI Test') {
 			parallel {
 				stage('Deploy') {
@@ -17,7 +11,6 @@ pipeline {
 						input message: 'Finished using the web site? (Click "Proceed" to continue)'
 						sh 'chmod +x ./jenkins/scripts/kill.sh'
 						sh './jenkins/scripts/kill.sh'
-						sh 'docker network rm my-net'
 					}
 				}
 				stage('Headless Browser Test') {
